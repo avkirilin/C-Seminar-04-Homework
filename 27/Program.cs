@@ -15,21 +15,32 @@ int Summa(string str)
     return sum;
 }
 Console.WriteLine();
-void ShowSumDigitsOfNumber(int number)
+int ShowSumDigitsOfNumber(int number)
+{
+    int result = 0;
+    int tempNumber = number;
+    while (tempNumber != 0)
     {
-        int result = 0;
-        int tempNumber = number;
-        while (tempNumber != 0)
-        {
-            result += tempNumber % 10; //result = result + tempNumber % 10
-            tempNumber /= 10;          //tempNumber = tempNumber / 10
-        }
-        Console.WriteLine($"{number} -> {result}");
+        result += tempNumber % 10; //result = result + tempNumber % 10
+        tempNumber /= 10;          //tempNumber = tempNumber / 10
     }
+    return result;
+}
+void PrintStringResult(string newString)
+{
+    Console.WriteLine($"Сумма всех чисел {newString} будет равна: {Summa(newString)}");
+}
+
+
+void PrintResult(int number)
+{
+    Console.WriteLine($"Сумма всех чисел {number} будет равна: {ShowSumDigitsOfNumber(number)}");
+}
+
 
 Console.WriteLine("Введите любое целое число");
 string newString = Console.ReadLine()!;
 int number = Convert.ToInt32(newString);
 // int chislo = Convert.ToInt32(newString);
-Console.WriteLine($"Сумма всех чисел из заданного числа будет равна: {Summa(newString)}");
-ShowSumDigitsOfNumber(number);
+PrintStringResult(newString);
+PrintResult(number);
